@@ -3,6 +3,7 @@ package com.pluralsight.blog;
 import com.pluralsight.blog.data.PostRepository;
 import com.pluralsight.blog.model.Post;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,10 +19,10 @@ public class BlogController {
     }
 
     @RequestMapping("/")
-    public String listPosts(ModelMap modelMap){
+    public String listPosts(Model model){
 
         List<Post> posts = postRepository.getAllPosts();
-        modelMap.put("posts", posts);
+        model.addAttribute("posts", posts);
         return "home";
     }
 
